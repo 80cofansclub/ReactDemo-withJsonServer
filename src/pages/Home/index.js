@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { GET_DATA } from '../../global/constants';
 import React from 'react';
 import Edit from './component/Edit';
@@ -24,6 +24,7 @@ async function fetchSetData(data) {
 const Home = () => {
   // let a = 100;
   const [data, setData] = useState([]);
+  const submittingData = useRef(false);
 
   useEffect(() => {
     fetchSetData(data);
