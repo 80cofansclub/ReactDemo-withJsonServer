@@ -1,7 +1,8 @@
 import React from 'react';
 
-const Item = ({ id, title, date, time, deleteData }) => {
+const Item = ({ id, title, date, time, deleteData, submittingStatus }) => {
   function deleteItem() {
+    submittingStatus.current = true;
     deleteData(function (prev) {
       return prev.filter((item) => item.id !== id);
     });

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { v4 } from 'uuid';
 
-const Edit = ({ add }) => {
+const Edit = ({ add, submittingStatus }) => {
   const [title, setTitle] = useState('');
   function titleChange(e) {
     setTitle(e.target.value);
@@ -19,6 +19,7 @@ const Edit = ({ add }) => {
   }
 
   function addItem() {
+    submittingStatus.current = true;
     add(function (prev) {
       return [
         {

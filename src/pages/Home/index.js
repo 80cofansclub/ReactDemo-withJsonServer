@@ -27,10 +27,11 @@ const Home = () => {
   const submittingStatus = useRef(false);
 
   useEffect(() => {
-    if (!submittingStatus) {
+    console.log(submittingStatus);
+    if (!submittingStatus.current) {
       return;
     }
-    fetchSetData(data);
+    fetchSetData(data).then((data) => (submittingStatus.current = false));
   }, [data]);
 
   useEffect(() => {
@@ -45,8 +46,12 @@ const Home = () => {
 
   return (
     <div className="app">
-      <Edit add={setData} />
-      <List listData={data} deleteData={setData} />
+      <Edit add={setData} submittingStatus={submittingStatus} />
+      <List
+        listData={data}
+        deleteData={setData}
+        submittingStatus={submittingStatus}
+      />
     </div>
   );
 };
