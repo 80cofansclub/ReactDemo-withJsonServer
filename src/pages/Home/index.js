@@ -15,9 +15,9 @@ async function fetchSetData(data) {
   await fetch(GET_DATA, {
     method: 'PUT',
     headers: {
-      'Contnt-type': 'application/json',
+      'Content-type': 'application/json',
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ data }),
   });
 }
 
