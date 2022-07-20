@@ -24,9 +24,12 @@ async function fetchSetData(data) {
 const Home = () => {
   // let a = 100;
   const [data, setData] = useState([]);
-  const submittingData = useRef(false);
+  const submittingStatus = useRef(false);
 
   useEffect(() => {
+    if (!submittingStatus) {
+      return;
+    }
     fetchSetData(data);
   }, [data]);
 
