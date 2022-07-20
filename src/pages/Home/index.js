@@ -7,7 +7,7 @@ import './index.css';
 
 async function fetchData() {
   const res = await fetch(GET_DATA);
-  const data = await JSON.stringify(res.json());
+  const data = await res.json();
   console.log(data);
 }
 
