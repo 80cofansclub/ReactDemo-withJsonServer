@@ -5,10 +5,10 @@ import Edit from './component/Edit';
 import List from './component/List';
 import './index.css';
 
-async function fetchData() {
+async function fetchData(setData) {
   const res = await fetch(GET_DATA);
-  const data = await res.json();
-  console.log(data);
+  const { data } = await res.json();
+  setData(data);
 }
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetchData();
+    fetchData(setData);
   }, []); // 綁定data異動所反映的事件
 
   // function plus() { // 利用prev保留目前值
