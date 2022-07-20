@@ -11,13 +11,27 @@ async function fetchData(setData) {
   setData(data);
 }
 
+async function fetchSetData(data) {
+  await fetch(GET_DATA, {
+    method: 'PUT',
+    headers: {
+      'Contnt-type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+}
+
 const Home = () => {
   // let a = 100;
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    fetchSetData(data);
+  }, [data]);
+
+  useEffect(() => {
     fetchData(setData);
-  }, []); // 綁定data異動所反映的事件
+  }, []); // 綁定data異動所反映的事件, 若不綁定則指觸發一次
 
   // function plus() { // 利用prev保留目前值
   //   setA(function (prev) {
