@@ -27,7 +27,6 @@ const Home = () => {
   const submittingStatus = useRef(false);
 
   useEffect(() => {
-    console.log(submittingStatus);
     if (!submittingStatus.current) {
       return;
     }
